@@ -1,0 +1,3 @@
+rootProject.name = 'ReactNativeSoundManagement'
+
+include ':app'
