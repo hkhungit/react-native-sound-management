@@ -7,7 +7,6 @@
 #import "RCTUtils.h"
 
 @implementation SoundPlayerModule {
-    NSNumber *_audioPlayerId;
     id _progressUpdateTimer;
     int _progressUpdateInterval;
     NSDate *_prevProgressUpdateTime;
@@ -288,8 +287,11 @@ RCT_EXPORT_METHOD(resume:(nonnull NSNumber*)playerId withCallback:(RCTResponseSe
 
 -(NSMutableDictionary *) timeAVPlayer {
     NSMutableDictionary *dicts = [[NSMutableDictionary alloc] init];
-    [dicts setValue:  @(CMTimeGetSeconds(self.mAVPlayer.currentTime) * 1000) forKey: @"position"];
-    [dicts setValue: @(CMTimeGetSeconds(self.mAVPlayer.currentItem.asset.duration) * 1000) forKey: @"duration"];
+    if (self.mAVPlayer != nil)
+    {
+        [dicts setValue:  @(CMTimeGetSeconds(self.mAVPlayer.currentTime) * 1000) forKey: @"position"];
+        [dicts setValue: @(CMTimeGetSeconds(self.mAVPlayer.currentItem.asset.duration) * 1000) forKey: @"duration"];
+    }
     return  dicts;
 }
 @end
