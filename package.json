@@ -1,6 +1,12 @@
 {
   "name": "react-native-sound-management",
   "version": "0.0.1",
+  "description": "Cross-platform audio library for React Native",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/futurice/react-native-audio-toolkit"
+  },
+  "license": "MIT",
   "dependencies": {
     "async": "^2.0.0",
     "eventemitter3": "^1.2.0",
