@@ -9,7 +9,7 @@
 
 #import "SoundRecorderModule.h"
 #import "RCTEventDispatcher.h"
-#import "Helpers.h"
+#import "SoundHelpers.h"
 
 @import AVFoundation;
 
@@ -61,7 +61,7 @@ RCT_EXPORT_METHOD(prepare:(NSString * _Nullable)filename
                   withCallback:(RCTResponseSenderBlock)callback)
 {
     if ([filename length] == 0) {
-        NSDictionary* dict = [Helpers errObjWithCode:@"invalidpath"
+        NSDictionary* dict = [SoundHelpers errObjWithCode:@"invalidpath"
                                          withMessage:@"Provided path was empty"];
         callback(@[dict]);
         return;
@@ -78,7 +78,7 @@ RCT_EXPORT_METHOD(prepare:(NSString * _Nullable)filename
     NSError *error = nil;
     [audioSession setCategory:AVAudioSessionCategoryRecord error:&error];
     if (error) {
-        NSDictionary* dict = [Helpers errObjWithCode:@"preparefail" withMessage:@"Failed to set audio session category"];
+        NSDictionary* dict = [SoundHelpers errObjWithCode:@"preparefail" withMessage:@"Failed to set audio session category"];
         callback(@[dict]);
         
         return;
@@ -88,7 +88,7 @@ RCT_EXPORT_METHOD(prepare:(NSString * _Nullable)filename
     [audioSession setActive:YES error:&error];
     if (error) {
         NSString *errMsg = [NSString stringWithFormat:@"Could not set audio session active, error: %@", error];
-        NSDictionary* dict = [Helpers errObjWithCode:@"preparefail"
+        NSDictionary* dict = [SoundHelpers errObjWithCode:@"preparefail"
                                          withMessage:errMsg];
         callback(@[dict]);
         
@@ -96,19 +96,19 @@ RCT_EXPORT_METHOD(prepare:(NSString * _Nullable)filename
     }
     
     // Settings for the recorder
-    NSDictionary *recordSetting = [Helpers recorderSettingsFromOptions:options];
+    NSDictionary *recordSetting = [SoundHelpers recorderSettingsFromOptions:options];
     
     // Initialize a new recorder
     self.mAudioRecorder = [[AVAudioRecorder alloc] initWithURL:url settings:recordSetting error:&error];
     if (error) {
         NSString *errMsg = [NSString stringWithFormat:@"Failed to initialize recorder, error: %@", error];
-        NSDictionary* dict = [Helpers errObjWithCode:@"preparefail"
+        NSDictionary* dict = [SoundHelpers errObjWithCode:@"preparefail"
                                          withMessage:errMsg];
         callback(@[dict]);
         return;
         
     } else if (!self.mAudioRecorder) {
-        NSDictionary* dict = [Helpers errObjWithCode:@"preparefail" withMessage:@"Failed to initialize recorder"];
+        NSDictionary* dict = [SoundHelpers errObjWithCode:@"preparefail" withMessage:@"Failed to initialize recorder"];
         callback(@[dict]);
         
         return;
@@ -117,7 +117,7 @@ RCT_EXPORT_METHOD(prepare:(NSString * _Nullable)filename
     
     BOOL success = [self.mAudioRecorder prepareToRecord];
     if (!success) {
-        NSDictionary* dict = [Helpers errObjWithCode:@"preparefail" withMessage:@"Failed to prepare recorder. Settings\
+        NSDictionary* dict = [SoundHelpers errObjWithCode:@"preparefail" withMessage:@"Failed to prepare recorder. Settings\
                               are probably wrong."];
         callback(@[dict]);
         return;
@@ -130,14 +130,14 @@ RCT_EXPORT_METHOD(record:(RCTResponseSenderBlock)callback) {
     
     if (self.mAudioRecorder) {
         if (![self.mAudioRecorder record]) {
-            NSDictionary* dict = [Helpers errObjWithCode:@"startfail" withMessage:@"Failed to start recorder"];
+            NSDictionary* dict = [SoundHelpers errObjWithCode:@"startfail" withMessage:@"Failed to start recorder"];
             callback(@[dict]);
             return;
         }
         
         [self startProgressTimer];
     } else {
-        NSDictionary* dict = [Helpers errObjWithCode:@"notfound" withMessage:@"Recorder with that id was not found"];
+        NSDictionary* dict = [SoundHelpers errObjWithCode:@"notfound" withMessage:@"Recorder with that id was not found"];
         callback(@[dict]);
         return;
     }
@@ -148,7 +148,7 @@ RCT_EXPORT_METHOD(stop:(RCTResponseSenderBlock)callback) {
     if (self.mAudioRecorder) {
         [self.mAudioRecorder stop];
     } else {
-        NSDictionary* dict = [Helpers errObjWithCode:@"notfound" withMessage:@"Recorder with that id was not found"];
+        NSDictionary* dict = [SoundHelpers errObjWithCode:@"notfound" withMessage:@"Recorder with that id was not found"];
         callback(@[dict]);
         return;
     }

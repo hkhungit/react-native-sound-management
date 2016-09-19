@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Helpers : NSObject
+@interface SoundHelpers : NSObject
 
 +(NSDictionary *) errObjWithCode:(NSString*)code
                      withMessage:(NSString*)message;

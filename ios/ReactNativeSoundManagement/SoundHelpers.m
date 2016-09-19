@@ -8,10 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-#import "Helpers.h"
+#import "SoundHelpers.h"
 #import <AVFoundation/AVFoundation.h>
 
-@implementation Helpers
+@implementation SoundHelpers
 
 + (NSDictionary*) errObjWithCode:(NSString*)code
                      withMessage:(NSString*)message {

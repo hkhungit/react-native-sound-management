@@ -20,9 +20,9 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		3820F4E71D8FF0D8004A1C98 /* SoundHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 3820F4E61D8FF0D8004A1C98 /* SoundHelpers.m */; };
 		38EEB6ED1D8FD290003F5384 /* SoundRecorderModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 38EEB6EC1D8FD290003F5384 /* SoundRecorderModule.m */; };
 		38EEB6EF1D8FD2BE003F5384 /* SoundPlayerModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 38EEB6EE1D8FD2BE003F5384 /* SoundPlayerModule.m */; };
-		38EEB6F21D8FD304003F5384 /* Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 38EEB6F11D8FD304003F5384 /* Helpers.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -38,15 +38,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3820F4E51D8FF0D8004A1C98 /* SoundHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundHelpers.h; sourceTree = "<group>"; };
+		3820F4E61D8FF0D8004A1C98 /* SoundHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundHelpers.m; sourceTree = "<group>"; };
 		38EEB6B21D8FD109003F5384 /* libReactNativeSoundManagement.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libReactNativeSoundManagement.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		38EEB6E71D8FD217003F5384 /* ReactNativeSoundManagement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReactNativeSoundManagement.h; sourceTree = "<group>"; };
-		38EEB6E81D8FD217003F5384 /* ReactNativeSoundManagement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReactNativeSoundManagement.m; sourceTree = "<group>"; };
-		38EEB6EA1D8FD243003F5384 /* Helpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Helpers.h; sourceTree = "<group>"; };
 		38EEB6EB1D8FD26B003F5384 /* SoundRecorderModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SoundRecorderModule.h; sourceTree = "<group>"; };
 		38EEB6EC1D8FD290003F5384 /* SoundRecorderModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundRecorderModule.m; sourceTree = "<group>"; };
 		38EEB6EE1D8FD2BE003F5384 /* SoundPlayerModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundPlayerModule.m; sourceTree = "<group>"; };
 		38EEB6F01D8FD2E5003F5384 /* SoundPlayerModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SoundPlayerModule.h; sourceTree = "<group>"; };
-		38EEB6F11D8FD304003F5384 /* Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Helpers.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,14 +77,12 @@
 		38EEB6B41D8FD109003F5384 /* ReactNativeSoundManagement */ = {
 			isa = PBXGroup;
 			children = (
-				38EEB6E71D8FD217003F5384 /* ReactNativeSoundManagement.h */,
-				38EEB6E81D8FD217003F5384 /* ReactNativeSoundManagement.m */,
-				38EEB6EA1D8FD243003F5384 /* Helpers.h */,
+				3820F4E51D8FF0D8004A1C98 /* SoundHelpers.h */,
+				3820F4E61D8FF0D8004A1C98 /* SoundHelpers.m */,
 				38EEB6EB1D8FD26B003F5384 /* SoundRecorderModule.h */,
 				38EEB6EC1D8FD290003F5384 /* SoundRecorderModule.m */,
 				38EEB6EE1D8FD2BE003F5384 /* SoundPlayerModule.m */,
 				38EEB6F01D8FD2E5003F5384 /* SoundPlayerModule.h */,
-				38EEB6F11D8FD304003F5384 /* Helpers.m */,
 			);
 			path = ReactNativeSoundManagement;
 			sourceTree = "<group>";
@@ -153,7 +149,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				38EEB6F21D8FD304003F5384 /* Helpers.m in Sources */,
+				3820F4E71D8FF0D8004A1C98 /* SoundHelpers.m in Sources */,
 				38EEB6ED1D8FD290003F5384 /* SoundRecorderModule.m in Sources */,
 				38EEB6EF1D8FD2BE003F5384 /* SoundPlayerModule.m in Sources */,
 			);

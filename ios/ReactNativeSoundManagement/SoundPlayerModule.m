@@ -2,7 +2,7 @@
 //  Licensed under the MIT license. For more information, see LICENSE.
 
 #import "SoundPlayerModule.h"
-#import "Helpers.h"
+#import "SoundHelpers.h"
 #import "RCTEventDispatcher.h"
 #import "RCTUtils.h"
 
@@ -69,7 +69,7 @@ RCT_EXPORT_METHOD(prepare:(NSString* _Nullable)path
                   withCallback:(RCTResponseSenderBlock)callback)
 {
     if ([path length] == 0) {
-        NSDictionary* dict = [Helpers errObjWithCode:@"invalidpath" withMessage:@"Provided path was empty"];
+        NSDictionary* dict = [SoundHelpers errObjWithCode:@"invalidpath" withMessage:@"Provided path was empty"];
         callback(@[dict]);
         return;
     }
@@ -77,7 +77,7 @@ RCT_EXPORT_METHOD(prepare:(NSString* _Nullable)path
     // Try to find the correct file
     NSURL *url = [self findUrlForPath:path];
     if (!url) {
-        NSDictionary* dict = [Helpers errObjWithCode:@"invalidpath" withMessage:@"No file found at path"];
+        NSDictionary* dict = [SoundHelpers errObjWithCode:@"invalidpath" withMessage:@"No file found at path"];
         callback(@[dict]);
         return;
     }
@@ -96,7 +96,7 @@ RCT_EXPORT_METHOD(prepare:(NSString* _Nullable)path
     NSError *error = nil;
     [[AVAudioSession sharedInstance] setCategory: AVAudioSessionCategoryPlayback error: &error];
     if (error) {
-        NSDictionary* dict = [Helpers errObjWithCode:@"preparefail"
+        NSDictionary* dict = [SoundHelpers errObjWithCode:@"preparefail"
                                          withMessage:@"Failed to set audio session category."];
         callback(@[dict]);
         return;
@@ -116,7 +116,7 @@ RCT_EXPORT_METHOD(prepare:(NSString* _Nullable)path
     if (self.mAVPlayer.status == AVPlayerStatusReadyToPlay) {
         callback(@[[NSNull null]]);
     } else {
-        NSDictionary* dict = [Helpers errObjWithCode:@"preparefail"
+        NSDictionary* dict = [SoundHelpers errObjWithCode:@"preparefail"
                                          withMessage:[NSString stringWithFormat:@"Preparing player failed"]];
         callback(@[dict]);
     }
@@ -129,7 +129,7 @@ RCT_EXPORT_METHOD(destroy:(RCTResponseSenderBlock)callback) {
 
 RCT_EXPORT_METHOD(seek:(nonnull NSNumber*)position withCallback:(RCTResponseSenderBlock)callback) {
     if (!self.mAVPlayer) {
-        NSDictionary* dict = [Helpers errObjWithCode:@"notfound"
+        NSDictionary* dict = [SoundHelpers errObjWithCode:@"notfound"
                                          withMessage:[NSString stringWithFormat:@"player not found."]];
         callback(@[dict]);
         return;
@@ -159,7 +159,7 @@ RCT_EXPORT_METHOD(seek:(nonnull NSNumber*)position withCallback:(RCTResponseSend
 
 RCT_EXPORT_METHOD(play:(RCTResponseSenderBlock)callback) {
     if (!self.mAVPlayer) {
-        NSDictionary* dict = [Helpers errObjWithCode:@"notfound"
+        NSDictionary* dict = [SoundHelpers errObjWithCode:@"notfound"
                                          withMessage:[NSString stringWithFormat:@"AVPlayer not found."]];
         callback(@[dict]);
         return;
@@ -173,7 +173,7 @@ RCT_EXPORT_METHOD(play:(RCTResponseSenderBlock)callback) {
 RCT_EXPORT_METHOD(set:(NSDictionary*)options withCallback:(RCTResponseSenderBlock)callback) {
     
     if (!self.mAVPlayer) {
-        NSDictionary* dict = [Helpers errObjWithCode:@"notfound"
+        NSDictionary* dict = [SoundHelpers errObjWithCode:@"notfound"
                                          withMessage:[NSString stringWithFormat:@"AVPlayer not found."]];
         callback(@[dict]);
         return;
@@ -195,7 +195,7 @@ RCT_EXPORT_METHOD(set:(NSDictionary*)options withCallback:(RCTResponseSenderBloc
 RCT_EXPORT_METHOD(stop:(RCTResponseSenderBlock)callback) {
     
     if (!self.mAVPlayer) {
-        NSDictionary* dict = [Helpers errObjWithCode:@"notfound"
+        NSDictionary* dict = [SoundHelpers errObjWithCode:@"notfound"
                                          withMessage:[NSString stringWithFormat:@"AVPlayer not found."]];
         callback(@[dict]);
         return;
@@ -210,7 +210,7 @@ RCT_EXPORT_METHOD(stop:(RCTResponseSenderBlock)callback) {
 RCT_EXPORT_METHOD(pause:(RCTResponseSenderBlock)callback) {
     
     if (!self.mAVPlayer) {
-        NSDictionary* dict = [Helpers errObjWithCode:@"notfound"
+        NSDictionary* dict = [SoundHelpers errObjWithCode:@"notfound"
                                          withMessage:[NSString stringWithFormat:@"AVPlayer not found."]];
         callback(@[dict]);
         return;
@@ -223,7 +223,7 @@ RCT_EXPORT_METHOD(pause:(RCTResponseSenderBlock)callback) {
 
 RCT_EXPORT_METHOD(resume:(nonnull NSNumber*)playerId withCallback:(RCTResponseSenderBlock)callback) {
     if (!self.mAVPlayer) {
-        NSDictionary* dict = [Helpers errObjWithCode:@"notfound"
+        NSDictionary* dict = [SoundHelpers errObjWithCode:@"notfound"
                                          withMessage:[NSString stringWithFormat:@"AVPlayer not found."]];
         callback(@[dict]);
         return;
